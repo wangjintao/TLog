@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TLog.iml" filepath="$PROJECT_DIR$/TLog.iml" />
       <module fileurl="file://$PROJECT_DIR$/TLogSample/TLogSample.iml" filepath="$PROJECT_DIR$/TLogSample/TLogSample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/loglib/loglib.iml" filepath="$PROJECT_DIR$/loglib/loglib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tlog/tlog.iml" filepath="$PROJECT_DIR$/tlog/tlog.iml" />
     </modules>
   </component>
 </project>

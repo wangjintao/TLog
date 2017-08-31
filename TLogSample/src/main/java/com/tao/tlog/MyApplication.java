@@ -16,7 +16,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         TLogApplication.initialize(this);
-        IConfig.SHOW_LOG = true;
-        IConfig.WRITE_LOG = true;
+        IConfig.SHOW_LOG = true;//是否在logcat中打印log
+        IConfig.WRITE_LOG = true;//是否在文件中记录
     }
 }

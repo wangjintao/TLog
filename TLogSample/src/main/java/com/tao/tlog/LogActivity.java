@@ -14,14 +14,14 @@ import com.tao.admin.loglib.FileUtils;
  */
 
 public class LogActivity extends AppCompatActivity {
-    private TextView logView;
+    private TextView mTextView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
-        logView = (TextView) findViewById(R.id.tv_log);
+        mTextView = (TextView) findViewById(R.id.tv_log);
         String log = FileUtils.readLogText();
-        logView.setText(log);
+        mTextView.setText(log);
     }
 }

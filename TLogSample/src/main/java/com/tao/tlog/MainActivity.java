@@ -32,7 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_log:
                 String title = titleEdit.getText().toString().trim();
                 String log = logEdit.getText().toString().trim();
-                Logger.e(title, log);
+                Logger.i(log);
+                Logger.w(log);
+                Logger.e(log);
                 break;
             case R.id.btn_check:
                 startActivity(new Intent(this, LogActivity.class));
