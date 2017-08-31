@@ -81,6 +81,7 @@ Android日志工具，支持Logcat输出和文件记录（可自定义大小，�
         Logger.w(title, log);
         Logger.e(title, log);
         ```
+        ![带标题](https://github.com/wangjintao/TLog/blob/master/pictures/pic1.png)
     * 无标题<br>
         ```
         Logger.i(log);
