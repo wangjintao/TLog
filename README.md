@@ -88,10 +88,13 @@ Android日志工具，支持Logcat输出和文件记录（可自定义大小，�
         Logger.w(log);
         Logger.e(log);
         ```
+        ![无标题](https://github.com/wangjintao/TLog/blob/master/pictures/pic2.png)
  6. 查看本地日志<br>
     ```
     String log = FileUtils.readLogText();
     mTextView.setText(log);
     ```
- 
- 
+    ![本地日志](https://github.com/wangjintao/TLog/blob/master/pictures/pic3.png)
+ ## 关于作者
+ **作者：王金涛**<br>
+ **邮箱：wangjintao1988@163.com**
