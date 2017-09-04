@@ -18,7 +18,7 @@ Android日志工具，支持Logcat输出和文件记录（可自定义大小，�
 2. 项目的**build.gradle**中添加：<br>
     ```
     dependencies {
-        compile 'com.github.wangjintao:TLog:V1.0.0'
+        compile 'com.github.wangjintao:TLog:V1.0.2'
     }
 
     ```
