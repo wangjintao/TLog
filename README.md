@@ -6,9 +6,22 @@ Android日志工具，支持Logcat输出和文件记录（可自定义大小，�
 ## 版本说明
 * V1.0.0 项目初始提交
 ## 使用介绍
-1. 下载最新tlog，import到project中；
-2. 工程项目的gradle中：<br>
-    ```compile project(':tlog')```
+1. 在根**build.gradle**中添加：<br>
+    ```
+    allprojects {
+    	repositories {
+    		...
+    		maven { url 'https://jitpack.io' }
+        }
+    }
+    ```
+2. 项目的**build.gradle**中添加：<br>
+    ```
+    dependencies {
+        compile 'com.github.wangjintao:TLog:V1.0.0'
+    }
+
+    ```
 3. 如果你的项目中没有更改Application，在**AndroidManifest.xml**中配置如下：<br>
     ```
     <manifest>
