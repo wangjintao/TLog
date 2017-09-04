@@ -60,7 +60,7 @@ Android日志工具，支持Logcat输出和文件记录（可自定义大小，�
             TLogApplication.initialize(this);
             IConfig.getInstance().isShowLog(true)//是否在logcat中打印log,默认不打印
                     .isWriteLog(true)//是否在文件中记录，默认不记录
-                    .fileSize(100000)//日志文件的大小，默认0.1M
+                    .fileSize(100000)//日志文件的大小，默认0.1M,以bytes为单位
                     .tag("myTag");//logcat 日志过滤tag
         }
     }
