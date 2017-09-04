@@ -16,9 +16,9 @@ public class Logger {
 
     public static void i(String title, String msg) {
         String str = formatString(title, msg);
-        if (IConfig.SHOW_LOG)
-            Log.i(Constants.TAG, str);
-        if (IConfig.WRITE_LOG)
+        if (IConfig.getInstance().getIsShowLog())
+            Log.i(IConfig.getInstance().getTag(), str);
+        if (IConfig.getInstance().getIsWriteLog())
             FileUtils.writeLogFile(str);
     }
 
@@ -28,9 +28,9 @@ public class Logger {
 
     public static void w(String title, String msg) {
         String str = formatString(title, msg);
-        if (IConfig.SHOW_LOG)
-            Log.w(Constants.TAG, str);
-        if (IConfig.WRITE_LOG)
+        if (IConfig.getInstance().getIsShowLog())
+            Log.w(IConfig.getInstance().getTag(), str);
+        if (IConfig.getInstance().getIsWriteLog())
             FileUtils.writeLogFile(str);
     }
 
@@ -40,9 +40,9 @@ public class Logger {
 
     public static void e(String title, String msg) {
         String str = formatString(title, msg);
-        if (IConfig.SHOW_LOG)
-            Log.e(Constants.TAG, str);
-        if (IConfig.WRITE_LOG)
+        if (IConfig.getInstance().getIsShowLog())
+            Log.e(IConfig.getInstance().getTag(), str);
+        if (IConfig.getInstance().getIsWriteLog())
             FileUtils.writeLogFile(str);
     }
 

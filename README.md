@@ -58,20 +58,11 @@ Android日志工具，支持Logcat输出和文件记录（可自定义大小，�
         public void onCreate() {
             super.onCreate();
             TLogApplication.initialize(this);
-            IConfig.SHOW_LOG = true;//是否在logcat中打印log
-            IConfig.WRITE_LOG = true;//是否在文件中记录
+            IConfig.getInstance().isShowLog(true)//是否在logcat中打印log,默认不打印
+                    .isWriteLog(true)//是否在文件中记录，默认不记录
+                    .fileSize(100000)//日志文件的大小，默认0.1M
+                    .tag("myTag");//logcat 日志过滤tag
         }
-    }
-    ```
-    修改文件名称，文件大小和TAG名称需要到Constants中去修改：<br>
-    ```
-    public class Constants {
-    
-        public static final String fileName = "tlog.log";//log日志的文件名称
-    
-        public static final int fileSize = 100000;//日志文件的大小，默认0.1M
-    
-        public static final String TAG = "LOG";//Logcat中显示的tag
     }
     ```
  5. 打印/记录日志

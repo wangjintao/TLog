@@ -16,7 +16,9 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         TLogApplication.initialize(this);
-        IConfig.SHOW_LOG = true;//是否在logcat中打印log
-        IConfig.WRITE_LOG = true;//是否在文件中记录
+        IConfig.getInstance().isShowLog(true)//是否在logcat中打印log,默认不打印
+        .isWriteLog(true)//是否在文件中记录，默认不记录
+        .fileSize(100000)//日志文件的大小，默认0.1M
+        .tag("myTag");//logcat 日志过滤tag
     }
 }

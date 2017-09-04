@@ -20,10 +20,10 @@ public class FileUtils {
     public static void writeLogFile(String msg) {
         synchronized (obj) {
             try {
-                File file = new File(TLogApplication.getAPP().getFilesDir(), Constants.fileName);
+                File file = new File(TLogApplication.getAPP().getFilesDir(), IConfig.fileName);
                 FileWriter fw = null;
                 if (file.exists()) {
-                    if (file.length() > Constants.fileSize)
+                    if (file.length() > IConfig.getInstance().getFileSize())
                         fw = new FileWriter(file, false);
                     else
                         fw = new FileWriter(file, true);
@@ -48,11 +48,11 @@ public class FileUtils {
     public static String readLogText() {
         FileReader fr = null;
         try {
-            File file = new File(TLogApplication.getAPP().getFilesDir(), Constants.fileName);
+            File file = new File(TLogApplication.getAPP().getFilesDir(), IConfig.fileName);
             if (!file.exists()) {
                 return "";
             }
-            long n = Constants.fileSize;
+            long n = IConfig.getInstance().getFileSize();
             long len = file.length();
             long skip = len - n;
             fr = new FileReader(file);
