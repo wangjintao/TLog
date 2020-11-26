@@ -33,9 +33,9 @@ public class FileUtils {
                 Date d = new Date();
                 SimpleDateFormat s = new SimpleDateFormat("MM-dd HH:mm:ss");
                 String dateStr = s.format(d);
-
                 fw.write(String.format("[%s] %s", dateStr, msg));
                 fw.write(13);
+                fw.write(10);
                 fw.write(10);
                 fw.flush();
                 fw.close();
