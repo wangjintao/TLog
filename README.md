@@ -1,4 +1,4 @@
-# TLog
+# TLog [![](https://jitpack.io/v/wangjintao/TLog.svg)](https://jitpack.io/#wangjintao/TLog)
 Android日志工具，支持Logcat输出和文件记录（可自定义大小，默认0.1M），两种显示方式都可以配置是否需要显示。
 ## 功能介绍
 * 控制台日志显示，支持配置TAG过滤
@@ -19,7 +19,7 @@ Android日志工具，支持Logcat输出和文件记录（可自定义大小，�
 2. 项目的**build.gradle**中添加：<br>
     ```
     dependencies {
-        compile 'com.github.wangjintao:TLog:v1.0.2'
+        implementation 'com.github.wangjintao:TLog:v1.0.2'
     }
 
     ```
