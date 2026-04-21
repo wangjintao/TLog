@@ -11,6 +11,7 @@ import com.tao.tlog.v2.loggers.Logger
  **/
 object TLog {
 
+    private val lock = Any()
     private lateinit var logger: Logger
     private var defaultTag: String = "TLog"
     private val tempTag = ThreadLocal<String?>()
@@ -18,8 +19,10 @@ object TLog {
     fun init(block: LoggerConfig.() -> Unit) {
         val config = LoggerConfig().apply(block)
 
-        logger = createLogger(config)
-        defaultTag = config.defaultTag
+        synchronized(lock) {
+            logger = createLogger(config)
+            defaultTag = config.defaultTag
+        }
     }
     private fun createLogger(config: LoggerConfig): Logger {
         return Logger(
@@ -32,7 +35,13 @@ object TLog {
 
     private fun get(): Logger {
         if (!::logger.isInitialized) {
-            throw IllegalStateException("TLog not initialized")
+            synchronized(lock) {
+                if (!::logger.isInitialized) {
+                    val config = LoggerConfig()
+                    logger = createLogger(config)
+                    defaultTag = config.defaultTag
+                }
+            }
         }
         return logger
     }
