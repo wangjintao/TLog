@@ -15,9 +15,29 @@ class MainActivity : AppCompatActivity() {
         setContentView(mViewBinding.root)
 
         mViewBinding.addLogBtn.setOnClickListener {
+            //打印长日志
             val poem = buildLongPoemLog()
-            TLog.d(poem)
+//            TLog.d(poem)
+            //打印不同级别日志
+            val log = buildShortLog()
+//            TLog.v(log)
+//            TLog.d(log)
+//            TLog.i(log)
+//            TLog.w(log)
+//            TLog.e(log)
+            //添加tag
+//            TLog.tag("tag1").d(log)
+//            TLog.tag("tag2").d(log)
+//            TLog.tag("tag3").d(log)
+            //记录日志到文件
+            TLog.file().d(log)
+            TLog.file().d(poem)
+
         }
+    }
+
+    private fun buildShortLog(): String {
+        return "伟大的中华人民共和国万岁！"
     }
 
     private fun buildLongPoemLog(): String {

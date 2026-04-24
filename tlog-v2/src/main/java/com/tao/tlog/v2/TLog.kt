@@ -1,9 +1,12 @@
 package com.tao.tlog.v2
 
+import com.tao.tlog.v2.constants.AppContextHolder
+import java.io.File
 import com.tao.tlog.v2.constants.LogLevel
 import com.tao.tlog.v2.enums.LogStrategy
 import com.tao.tlog.v2.loggers.FileLogger
 import com.tao.tlog.v2.loggers.Logger
+import com.tao.tlog.v2.printers.FilePrinter
 
 /**
  *Author: WangJintao
@@ -25,12 +28,31 @@ object TLog {
         }
     }
     private fun createLogger(config: LoggerConfig): Logger {
+        val filePrinter = when {
+            config.filePrinter != null -> config.filePrinter
+            !config.enableFileLogging -> null
+            else -> FilePrinter(
+                logDir = resolveLogDir(config.logDir),
+                maxFileSizeBytes = config.maxFileSizeBytes,
+                maxFileCount = config.maxFileCount
+            )
+        }
+
         return Logger(
             defaultTag = config.defaultTag,
             minLevel = config.minLevel,
             consolePrinter = config.consolePrinter,
-            filePrinter = config.filePrinter
+            filePrinter = filePrinter
         )
+    }
+
+    private fun resolveLogDir(customLogDir: File?): File {
+        if (customLogDir != null) return customLogDir
+
+        val context = requireNotNull(AppContextHolder.get()) {
+            "TLog failed to resolve application context. Ensure the app keeps the merged TLogInitProvider, or pass logDir manually."
+        }
+        return File(context.filesDir, "log")
     }
 
     private fun get(): Logger {
