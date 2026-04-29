@@ -2,7 +2,6 @@ package com.tao.sample
 
 import android.app.Application
 import com.tao.tlog.v2.TLog
-import com.tao.tlog.v2.constants.LogLevel
 
 /**
  *Author: WangJintao
@@ -13,7 +12,6 @@ class MyApp: Application() {
         super.onCreate()
         TLog.init {
             defaultTag = "tao" //日志的tag，全局配置，写日志的时候还可以给每条日志单独设置tag。不设置时默认tag为TLog
-            minLevel = LogLevel.INFO//设置打印的日志的最低级别，默认：LogLevel.DEBUG
         }
     }
 }

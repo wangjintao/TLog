@@ -40,7 +40,6 @@ object TLog {
 
         return Logger(
             defaultTag = config.defaultTag,
-            minLevel = config.minLevel,
             consolePrinter = config.consolePrinter,
             filePrinter = filePrinter
         )

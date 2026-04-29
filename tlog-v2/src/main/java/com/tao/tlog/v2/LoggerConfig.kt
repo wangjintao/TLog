@@ -1,6 +1,5 @@
 package com.tao.tlog.v2
 
-import com.tao.tlog.v2.constants.LogLevel
 import com.tao.tlog.v2.interfaces.Printer
 import com.tao.tlog.v2.printers.ConsolePrinter
 import java.io.File
@@ -16,8 +15,6 @@ class LoggerConfig {
     }
 
     var defaultTag: String = "TLog"
-    var minLevel: Int = LogLevel.DEBUG
-
     var consolePrinter: Printer? = ConsolePrinter()
     var filePrinter: Printer? = null
 
