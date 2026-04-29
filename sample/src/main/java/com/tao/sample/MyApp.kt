@@ -1,7 +1,6 @@
 package com.tao.sample
 
 import android.app.Application
-import android.util.Log
 import com.tao.tlog.v2.TLog
 import com.tao.tlog.v2.constants.LogLevel
 

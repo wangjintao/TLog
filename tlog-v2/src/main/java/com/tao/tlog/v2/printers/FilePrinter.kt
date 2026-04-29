@@ -5,6 +5,8 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 
 /**
  *Author: WangJintao
@@ -15,23 +17,34 @@ class FilePrinter(
     private val maxFileSizeBytes: Long,
     private val maxFileCount: Int
 ) : Printer {
+    companion object {
+        private val fileExecutor: ExecutorService = Executors.newSingleThreadExecutor { runnable ->
+            Thread(runnable, "TLog-File").apply {
+                isDaemon = true
+            }
+        }
+    }
+
     private val lineDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.getDefault())
     private val fileDateFormat = SimpleDateFormat("yyyyMMdd_HHmmss_SSS", Locale.getDefault())
-    private val lock = Any()
 
     override fun println(level: Int, tag: String, msg: String) {
-        synchronized(lock) {
-            try {
-                if (!logDir.exists()) logDir.mkdirs()
+        fileExecutor.execute {
+            writeInternal(tag, msg)
+        }
+    }
 
-                val time = lineDateFormat.format(Date())
-                val log = "$time [$tag] $msg\n"
-                val file = resolveCurrentLogFile(log.toByteArray().size.toLong())
+    private fun writeInternal(tag: String, msg: String) {
+        try {
+            if (!logDir.exists()) logDir.mkdirs()
 
-                file.appendText(log)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            val time = lineDateFormat.format(Date())
+            val log = "$time [$tag] $msg\n"
+            val file = resolveCurrentLogFile(log.toByteArray().size.toLong())
+
+            file.appendText(log)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
