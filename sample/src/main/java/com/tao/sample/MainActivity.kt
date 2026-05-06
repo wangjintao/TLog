@@ -19,19 +19,29 @@ class MainActivity : AppCompatActivity() {
             val poem = buildLongPoemLog()
 //            TLog.d(poem)
             //打印不同级别日志
-            val log = buildShortLog()
+//            val log = buildShortLog()
 //            TLog.v(log)
 //            TLog.d(log)
 //            TLog.i(log)
 //            TLog.w(log)
 //            TLog.e(log)
+
             //添加tag
 //            TLog.tag("tag1").d(log)
 //            TLog.tag("tag2").d(log)
 //            TLog.tag("tag3").d(log)
+
+//            TLog.tag("Network").d("request start")
+//            TLog.tag("Database").w("query slow")
             //记录日志到文件
-            TLog.file().d(log)
-            TLog.file().d(poem)
+//            TLog.file().d(log)
+//            TLog.file().d(poem)
+
+            TLog.file().v("verbose file log")
+            TLog.file().d("debug file log")
+            TLog.file().i("info file log")
+            TLog.file().w("warn file log")
+            TLog.file().e("error file log")
 
         }
     }

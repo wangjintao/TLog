@@ -1,3 +1,0 @@
-include ':TLogSample', ':tlog'
-include ':tlog-v2'
-include ':sample'

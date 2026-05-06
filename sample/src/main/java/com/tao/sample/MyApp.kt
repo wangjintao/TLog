@@ -7,11 +7,14 @@ import com.tao.tlog.v2.TLog
  *Author: WangJintao
  * Date: 2026/4/14 15:55
  **/
-class MyApp: Application() {
+class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
         TLog.init {
-            defaultTag = "tao" //日志的tag，全局配置，写日志的时候还可以给每条日志单独设置tag。不设置时默认tag为TLog
+            defaultTag = "AppLog"//全局tag，默认TLog
+            enableFileLogging = true//是否开启文件日志存储，默认true
+            maxFileSizeBytes = 2L * 1024L * 1024L//单个日志文件大小，默认2M
+            maxFileCount = 5//存储的最大日志文件个数,默认5
         }
     }
 }

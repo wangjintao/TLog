@@ -11,8 +11,20 @@ class FileLogger  internal constructor(
     private val logger: Logger,
     private val tag: String
 ) {
+    fun v(msg: String) {
+        logger.log(LogLevel.VERBOSE, tag, msg, LogStrategy.CONSOLE_AND_FILE)
+    }
+
     fun d(msg: String) {
         logger.log(LogLevel.DEBUG, tag, msg, LogStrategy.CONSOLE_AND_FILE)
+    }
+
+    fun i(msg: String) {
+        logger.log(LogLevel.INFO, tag, msg, LogStrategy.CONSOLE_AND_FILE)
+    }
+
+    fun w(msg: String) {
+        logger.log(LogLevel.WARN, tag, msg, LogStrategy.CONSOLE_AND_FILE)
     }
 
     fun e(msg: String) {
